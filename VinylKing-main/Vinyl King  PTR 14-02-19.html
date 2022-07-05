@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Jquery links-->
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/themes/Vinyl_King.css" />
+	<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="jquery/jquery.mobile.custom.structure.css" />
+	 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src = "js/authenticate.js" ></script>
+	<script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+	<meta charset=utf-8 />
+	
+	
+<!-- Title / Manifest File-->
+<title>Vinyl King</title>
+<link rel="manifest" href="manifest.json">
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+<!-- B00329489 made the custom theme and imlemented the CSS style types -->
+<!-- B00330262 functions to upload the text and images to firebase -->
+<!-- Kyle created the filters on the marketplace and html forms of the upload page -->
+<!-- David create the about, FAQ and contact pages-->
+
+
+<!-- background vinyl texture applied to all pages -->
+<style type="text/css">
+
+body {
+    background: url(images/vin.jpg);
+    background-repeat:repeat-y;
+    background-position:center center;
+    background-attachment:scroll;
+    background-size:100% 100%;
+	border-color:silver;
+	
+}
+ui-page {
+    background: transparent;
+	
+}
+.ui-content{
+    background: transparent;
+}
+
+</style> 
+
+<!-- borders of tables -->
+<style type="text/css">
+#myTable {
+	
+	border-color: silver;
+	color: white;
+}
+
+</style>
+
+<!-- button colours -->
+<style type="text/css">
+.ui-btn {
+	background-color: #a30f0f;
+	border-color:silver;
+	color: white;
+}
+</style>
+
+<!-- text colours -->
+<style type="text/css">
+body {
+color:white;
+border-color:silver;
+}
+</style>
+
+<style>
+#myFooter {
+background-color:#a30f0f;
+border-color:silver;
+
+}
+</style>
+
+<!-- favicon vinyl icon -->
+<link	rel="icon"	href="images/favicon.png"	type="image/x-icon">
+
+</head>
+<body>
+
+
+
+
+
+<!-- FAQ page-->
+<div data-role="page" id="FAQS" data-theme="A">
+	<div data-role="header">
+		<h1>FAQS</h1>
+		
+			<!-- back button and nav bar for FAQ page-->
+			<a href="#" data-rel="back" data-iconpos="notext" data-icon="back">Back</a>
+			<div data-role="navbar">
+			<ul>
+				<li><a href="#home" class="ui-btn">Home</a></li>
+				<li><a href="#contact" class="ui-btn">Contact Admin</a></li>	
+			</ul>
+			</div>
+	</div>
+
+	<!-- the FAQ text -->
+	<div data-role="content">
+		<p>How do I create an account?<br>
+			On the sign up page simply put an email address and password and you’re ready to go<br><br>
+			
+			How do I sell a vinyl?<br>
+			By going to the upload page in your account. From there you can put in details for the vinyl you want to sell<br><br>
+			
+			Can I only sell vinyl’s?<br>
+			No, you have the option to put it on for swap so that people can offer their own vinyl’s for what you have<br><br>
+			
+			I only like hip-hop. Can I make it so I can only see these vinyl’s?<br>
+			Yes there is a filter in our marketplace so you can search for the genres you like<br><br>
+			
+			What if I need to get in touch with Vinyl King?<br>
+			Go to our contact us page, we are happy to answer any queries
+		</p>
+	</div>
+
+	<!--Footer for FAQ page-->
+	<div data-role="footer" data-position="fixed" style="background-color:black">
+		<a href="#home" data-icon="info">Home</a>
+		<a href="#FAQS" data-icon="info">FAQs</a>         <!-- header button for the panel -->
+		<a href="#contact" data-icon="info">Contact</a>         <!-- header button for the panel -->
+	</div>
+</div> 
+
+
+
+
+<!-- home page-->
+<div data-role="page" id="home" data-theme="A" >
+  
+	<div data-role="header">
+		<h1>Home</h1>
+				<!-- back button and nav bar for home page-->
+				<a href="#" data-rel="back" data-iconpos="notext" data-icon="back">Back</a>
+				<div data-role="navbar">
+				<ul>
+					<li><a href="#FAQS" class="ui-btn">FAQS</a></li>
+					<li><a href="#contact" class="ui-btn">Contatct</a></li>
+				</ul>
+			</div>
+	</div>
+
+	<!-- info about vinyl king and the banner logo -->
+	<div data-role="content">
+		<img src="images/banner.png" alt="Banner Art" style="width:500px;height:300px;">
+		<p>Welcome to Vinyl King</p>
+		<a href="#authenticate" class="ui-btn ">Login / Logout / Sign Up</a>
+		<h2>About</h2>
+		<p>Tell you about Vinyl king?<br>
+		
+		Vinyl King is the opne stop shop for your record buying and selling needs.<br>
+		
+		Whether you want to expand your collection or downsize it. Vinyl King can help.<br><br>
+		
+		Our app suits all buying selling and trading needs <br>
+		
+		with art previews and audio samples coming soon you will never purchase the wrong vinyl again<br>
+		</p>
+		<br>
+	</div>
+	
+	
+	<!--Footer for home page-->
+	<div data-role="footer" data-position="fixed" style="background-color:black">
+		<a href="#FAQS" data-icon="info">FAQs</a>         <!-- header button for the panel -->
+		<a href="#contact" data-icon="info">Contact</a>         <!-- header button for the panel -->
+		<a href="#home" data-icon="info">Home</a>
+	</div>
+  
+</div>
+
+
+
+
+
+
+
+<!-- admin contact page-->
+<div data-role="page" id="contact" data-theme="A">
+	<div data-role="header">
+		<h1>Contact Admin</h1>
+		<!-- back button and nav bar for contact page-->
+		<a href="#" data-rel="back" data-iconpos="notext" data-icon="back">Back</a>
+			<div data-role="navbar">
+			<ul>
+				<li><a href="#home" class="ui-btn">Home</a></li>
+				<li><a href="#FAQS" class="ui-btn">FAQS</a></li>	
+			</ul>
+			</div>
+	</div>
+	
+	<!-- contact info-->
+	<div data-role="content">
+		<p>Contact Us<br>
+		Email: vinylking@uws.co.uk<br>
+		Telephone: 01698 283100<br>
+		Address: Stephenson Place Hamilton International Technology Park Blantyre,Glasgow G72 0LH<br>
+		Social Media Coming Soon!<br><br>
+		Any questions don’t hesitate to get in touch with our team
+		</p>
+	</div>
+	
+	<!--Footer for contact page-->
+	<div data-role="footer"data-position="fixed"  style="background-color:black">
+		<a href="#FAQS" data-icon="info">FAQs</a>         <!-- header button for the panel -->
+		<a href="#contact" data-icon="info">Contact</a>         <!-- header button for the panel -->
+		<a href="#home" data-icon="info">Home</a>
+	</div>
+</div>	
+
+
+
+
+
+
+
+<!-- main menu page-->
+<div data-role="page" id="Main"data-theme="A" >
+	 
+	<div data-role="header">
+		<h1>Main Menu</h1>
+		<!-- back button and nav bar for main menu page-->
+		<a href="#" data-rel="back" data-iconpos="notext" data-icon="back">Back</a>
+			<div data-role="navbar">
+			<ul>
+				<li><a href="#FAQS" class="ui-btn">FAQS</a></li>
+				<li><a href="#home" class="ui-btn">Home</a></li>
+				<li><a href="#contact" class="ui-btn">Contact Admin</a></li>	
+			</ul>
+			</div>
+	</div>
+
+	<!-- login / log out and sign up options -->
+    <div data-role="main" class="ui-content">
+        <p>Welcome!</p>
+		<a href="#authenticate" class="ui-btn">Login/Logout</a><br>
+        <a href="#upload-page" class="ui-btn">Upload Page</a><br>
+        <a href="#marketplace-page" class="ui-btn">Marketplace Page</a>
+    </div>
+	
+	<!--Footer for menu page-->
+	<div data-role="footer" data-position="fixed" style="background-color:black">
+		<a href="#FAQS" data-icon="info">FAQs</a>         <!-- header button for the panel -->
+		<a href="#contact" data-icon="info">Contact</a>         <!-- header button for the panel -->
+		<a href="#home" data-icon="info">Home</a>
+	</div>
+</div>	
+
+
+
+
+
+
+
+<!-- upload page-->
+<div data-role="page" id="upload-page" data-theme="A" >
+	<div data-role="header">
+		<h1>Upload Page</h1>
+			<!-- back button and nav bar for FAQ page-->
+			<a href="#" data-rel="back" data-iconpos="notext" data-icon="back">Back</a>
+			<div data-role="navbar">
+			<ul>
+				<li><a href="#Home" class="ui-btn">Home</a></li>
+				<li><a href="#marketplace-page" class="ui-btn">Marketplace</a></li>
+				<li><a href="#Main" class="ui-btn">Main Menu</a></li>	
+			</ul>
+			</div>
+	</div>
+
+	
+		
+	<!-- User inputs data on vinyl -->
+	<div data-role="content">
+		
+
+		<label for="name">Vinyl Name:</label>
+		<input type="text" name="text-basic" id="vinyl-name" value="">
+		
+		<!-- genre options -->
+		<label for="genre" class="select">Genre:</label>
+		<select name="select-choice-1" id="vinyl-genre">
+    		<option value="Rock">Rock</option>
+    		<option value="Heavy Metal">Heavy Metal</option>
+			<option value="Rock n' Roll">Rock n' Roll</option>
+			<option value="Hard Rock"> Hard Rock</option>
+			<option value="Alternative">Alternative</option>
+			<option value="Thrash Metal"> Thrash Metal</option>
+			<option value="Pop"> Pop</option>
+			<option value="Jazz">Jazz</option>
+			<option value="Blues"> Blues</option>
+			<option value="Rhythm and Blues">Rhythm and Blues</option>
+			<option value="Rap">Rap</option>
+			<option value="Hip-Hop">Hip-Hop</option>
+    		<option value="Classical">Classical</option>
+		</select>
+		
+		<!-- vinyl condition selection -->
+		<form action="">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+	    		<br/><legend>Condition:</legend><br/>
+					<input type="radio" name="Con" onclick="conditionFunction(this.value)" value="New"><br/>New<br/><br/>
+					<input type="radio" name="Con" onclick="conditionFunction(this.value)" value="Preowned"><br/>Preowned<br/><br/>
+				You selected: <input type="text" id="Condition" readonly="readonly"><br/><br/>
+		</form>
+		
+		<!-- sale or swap selection-->
+		<form action="">
+			    <br/><legend>Sale or Swap?:</legend><br/>
+					<input type="radio" name="SoS" onclick="SwapOrSaleFunction(this.value)" value="Sale"><br/>Sale<br/><br/>
+					<input type="radio" name="SoS" onclick="SwapOrSaleFunction(this.value)" value="Swap"><br/>Swap<br/><br/>
+				You selected: <input type="text" id="PostType" readonly="readonly">
+			</fieldset>	
+		</form>
+		
+		<!-- vinyl price-->
+		<label for="vinyl-price">Price:</label>
+		<input type="text" name="text-basic" id="vinyl-price" value="">	
+		<br/>
+	
+		<!-- select vinyl art (image file) -->
+		<label class="myLabel" id="inputLabel">
+			<input type="file" id="upload" required/>
+			<span>Select File</span>
+        </label>
+        <div class="input-group upload-group">
+	
+        </div>
+
+        <button type="button" class="btn btn-primary upload-group" onclick="confirmUpload()">Upload Vinyl</button>
+
+	</div>
+
+	<!--Footer for upload page-->
+	<div data-role="footer" data-position="fixed" style="background-color:black">
+		<a href="#home" data-icon="info">Home</a>
+		<a href="#FAQS" data-icon="info">FAQs</a>         <!-- header button for the panel -->
+		<a href="#contact" data-icon="info">Contact</a>         <!-- header button for the panel -->
+	</div>
+ </div> 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+<!-- market place page -->
+<div data-role="page" id="marketplace-page" data-theme="A">
+	<div data-role="header">
+		<h1>Marketplace Page</h1>
+		
+		<!-- back button and nav bar for Market Place page-->
+		<a href="#" data-rel="back" data-iconpos="notext" data-icon="back">Back</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#Home" class="ui-btn">Home</a></li>
+				<li><a href="#marketplace-page" class="ui-btn">Marketplace</a></li>
+				<li><a href="#Main" class="ui-btn">Main Menu</a></li>	
+			</ul>
+		</div>
+		
+		<!-- marketplace buttons -->
+		<div data-role="content">
+		<button id="getTable">Get Table</button>
+		<a href="#upload-page" class="ui-btn">Upload Vinyl</a>
+		<button id="ClearMarketplaceTable" type="button">Clear Table</button>
+		<button onclick="filterCondition()" id="filterShite" type="button">Apply Filter</button>
+		
+		<fieldset data-role="controlgroup" data-type="horizontal">
+        	<legend>Filter</legend>
+			<!-- filter by condition options-->
+        	<label for="select-h-1a">Select A</label>
+        	<select name="select-h-1a" id="conditionFilter">
+				<option selected disabled>Condition</option>
+            	<option value="All">All</option>
+            	<option value="New">New</option>
+            	<option value="Preowned">Preowned</option>
+        	</select>
+
+			<!-- filter by post type options-->
+        	<label for="select-h-1b">Select B</label>
+        	<select name="select-h-1b" id="statusFilter">
+				<option selected disabled>Post Type</option>
+            	<option value="All">All</option>
+            	<option value="Sale">Sale</option>
+            	<option value="Swap">Swap</option>
+        	</select>
+
+			<!-- filter by genre options-->
+        	<label for="select-h-1c">Select C</label>
+        	<select name="select-h-1c" id="genreFilter">
+				<option selected disabled>Genre</option>
+            	<option value="All">All</option>
+            	<option value="Rock">Rock</option>
+    			<option value="Heavy Metal">Heavy Metal</option>
+				<option value="Rock n' Roll">Rock n' Roll</option>
+				<option value="Hard Rock"> Hard Rock</option>
+				<option value="Alternative">Alternative</option>
+				<option value="Thrash Metal"> Thrash Metal</option>
+				<option value="Pop"> Pop</option>
+				<option value="Jazz">Jazz</option>
+				<option value="Blues"> Blues</option>
+				<option value="Rhythm and blues">Rhythm and blues</option>
+				<option value="Rap">Rap</option>
+				<option value="Hip-Hop">Hip-Hop</option>
+    			<option value="Classical">Classical</option>
+        	</select>
+    	</fieldset>
+		 
+			<table data-role="table" class="ui-responsive" id="myTable"> 
+				<thead>
+					<tr>
+						<th>Condition</th>
+						<th>Genre</th>
+						<th>Album Name</th>
+						<th>Sale/Swap</th>
+						<th>Price</th>
+					</tr>	
+				</thead>
+				
+				<!-- do not delete tbody tags- "get table" populates these -->
+				<tbody>
+				</tbody>
+				
+			</table>
+		</div>
+	</div>
+
+	<!--Footer for market place page-->
+    <div data-role="footer" data-position="fixed" style="background-color:black">
+		<a href="#FAQS" data-icon="info">FAQs</a>         <!-- header button for the panel -->
+		<a href="#contact" data-icon="info">Contact</a>         <!-- header button for the panel -->
+		<a href="#home" data-icon="info">Home</a>         <!-- header button for the panel -->
+    </div>
+</div>
+
+
+<!-- login page-->
+<div data-role="page" id="authenticate" data-theme="A">
+	<div data-role="header">
+		<h1>Log In</h1>
+		<!-- back button login page-->
+
+		<a href="#" data-rel="back" data-iconpos="notext" data-icon="back">Back</a>
+	</div>
+	<div data-role="content">	
+		<!-- login / sign up and log out options -->
+		<input type='text' id='txtEmail' placeholder='Valid Email Address'/>
+		<input type='password' id='txtPassword' placeholder='Valid Password'/>
+		<button id="btnLogin"> Log in </button>
+		<button id="btnSignup"> Sign up </button>
+		<button id="btnLogout"> Log out </button>   
+	</div>
+
+	<!--Footer for login page-->
+	<div data-role="footer" data-position="fixed" style="background-color:black">
+		<a href="#FAQS" data-icon="info">FAQs</a>         <!-- header button for the panel -->
+		<a href="#contact" data-icon="info">Contact</a>         <!-- header button for the panel -->
+		<a href="#home" data-icon="info">Home</a>         <!-- header button for the panel -->
+     </div>
+  
+</div> 
+
+
+
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+ <script>
+   // Initialize Firebase
+   var config = {
+     apiKey: "AIzaSyAZ4Mc9uGS0-WwREVUAn1SasMdoKVz66_U",
+     authDomain: "vinylking-70e3e.firebaseapp.com",
+     databaseURL: "https://vinylking-70e3e.firebaseio.com",
+     projectId: "vinylking-70e3e",
+     storageBucket: "vinylking-70e3e.appspot.com",
+     messagingSenderId: "155486548174"
+   };
+   firebase.initializeApp(config);
+   
+   
+ </script>	
+ 
+ <script>
+
+		//condition and sale or swap options, adds user selection to a label to send to firebase
+		function conditionFunction(Con) {
+			document.getElementById("Condition").value = Con;
+		};
+
+		function SwapOrSaleFunction(SoS) {
+			document.getElementById("PostType").value = SoS;
+		};
+		
+		//gets info from firebase, adds to local variables
+		document.getElementById('getTable').addEventListener('click', function getTable(name, genre, Condition, PostType, price, albumart) {
+            var rootRef = firebase.database().ref().child("Vinyls");
+				rootRef.on("child_added", snap => {
+				var PostType = snap.child("PostType").val();
+				var genre = snap.child("genre").val();
+				var name = snap.child("name").val();
+				var Condition = snap.child("Condition").val();
+				var price = snap.child("price").val();
+				var albumart = snap.child("albumart").val();
+				var albumartURL = snap.child("albumartURL").val();
+				
+				
+				// Points to the root reference
+				var storageRef = firebase.storage().ref();
+
+				// Points to 'images'
+				var imagesRef = storageRef.child(albumart);
+				var url =imagesRef.getDownloadURL();
+				
+				//Populates marketplace table with info from firebase
+				$("#myTable tbody").append("<tr><td>" + Condition + "</td><td>" + genre + "</td><td>" + name + "</td><td>" + PostType + "</td><td>" + price + "</td><td>" + "</td><td>" + "<img src=" + albumartURL + " alt='' border=3 height=100 width=100></img>" + "</td></tr>");
+			
+			});
+        });
+        
+        //clears marketplace table
+        document.getElementById("ClearMarketplaceTable").addEventListener('click', function() {
+		$('#myTable tbody > tr').empty();
+        });
+        
+	 
+
+    </script>
+	
+	<script>
+	//filters in the marketplace
+	function filterCondition() {
+		var input, filter, table, tr, td, i, txtValue, all;
+		
+		//filter by condition
+		input = document.getElementById("conditionFilter");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("myTable");
+		tr = table.getElementsByTagName("tr");
+		all = "ALL";
+		if (filter != all) {
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		} else {
+			for (i = 0; i < tr.length; i++) {
+				tr[i].style.display = "";
+			}
+		}
+		
+		//filter by swap or sale
+		input = document.getElementById("statusFilter");
+		filter = input.value.toUpperCase();
+		if (filter != all) {
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[3];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		} else {
+			for (i = 0; i < tr.length; i++) {
+				tr[i].style.display = "";
+			}
+		}
+
+		//filter by genre
+		input = document.getElementById("genreFilter");
+		filter = input.value.toUpperCase();
+		if (filter != all) {
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[1];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		} else {
+			for (i = 0; i < tr.length; i++) {
+				tr[i].style.display = "";
+			}
+		}
+	}
+	</script>
+	
+</body>
+</html>
